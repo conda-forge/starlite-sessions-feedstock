@@ -1,5 +1,5 @@
 {% set name = "starlite-sessions" %}
-{% set version = "1.0.0" %}
+{% set version = "1.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/starlite-sessions-{{ version }}.tar.gz
-  sha256: 8881dc2351b6f6b92f0b64db8a69ea9d871def2598d11119e356202b1393c862
+  sha256: 9f309a2f9da82e78dbc5142ae56084d7df44aab6d0de4cea1aceef411df806d7
 
 build:
   noarch: python
