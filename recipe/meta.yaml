@@ -6,23 +6,28 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/starlite-sessions-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/starlite-sessions-{{ version }}.tar.gz
   sha256: 9f309a2f9da82e78dbc5142ae56084d7df44aab6d0de4cea1aceef411df806d7
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - poetry-core >=1.0.0
-    - python >=3.6,<4.0
+    - python {{ python_min }}
   run:
+    - python >={{ python_min }},<4.0
+    # Need to pin starlite<1.29; uses deprecated features
+    - starlite >=1.24.0,<1.29.0
+    # Not listed but fails import test if not included
     - cryptography
-    - python >=3.6,<4.0
-    - starlite >=1.17.1
+  # Need to pin pydantic<2; uses deprecated features
+  run_constrained:
+    - pydantic <2
 
 test:
   imports:
@@ -31,6 +36,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/starlite-api/starlite-sessions
