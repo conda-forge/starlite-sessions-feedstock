@@ -20,9 +20,8 @@ requirements:
     - poetry-core >=1.0.0
     - python {{ python_min }}
   run:
-    - cryptography
     - python >={{ python_min }},<4.0
-    - starlite >=1.17.1
+    - starlite >=1.24.0
 
 test:
   imports:
