@@ -21,7 +21,7 @@ requirements:
     - python {{ python_min }}
   run:
     - python >={{ python_min }},<4.0
-    - starlite >=1.24.0
+    - starlite >=1.24.0,<1.29.0
 
 test:
   imports:
